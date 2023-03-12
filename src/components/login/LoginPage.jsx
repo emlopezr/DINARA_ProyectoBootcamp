@@ -2,7 +2,11 @@ import React from 'react'
 
 const LoginPage = () => {
     return (
-        <div>LoginPage</div>
+        <div>
+            <div className="login-form">
+                Hola
+            </div>
+        </div>
     )
 }
 

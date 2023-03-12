@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../../styles/LoginPage.css'
 import '../../styles/loading.css'
 
 const LoginPage = () => {
@@ -28,7 +29,7 @@ const LoginPage = () => {
 
         // Manejo si la petición fue exitosa
         // const { state, id, name, role, message } = {
-            //     "state": true,
+        //     "state": true,
         //     "id": 1,
         //     "name": "Emmanuel López Rodríguez",
         //     "role": "administrador",
@@ -37,7 +38,7 @@ const LoginPage = () => {
         // setInfo({ name, role, message })
         // setLogged(true)
         // TODO: Mandar al redux y el localStorage el usuario
-        
+
         // Manejo si la petición falló
         const { state, message } = {
             "state": false,
@@ -56,7 +57,7 @@ const LoginPage = () => {
 
                     <div className="text">
                         <h1 className="text__title">
-                            Bienvenido 👋
+                            Bienvenido
                         </h1>
                         <p className="text__subtitle">
                             Ingresa la información solicitada para entrar
@@ -86,7 +87,7 @@ const LoginPage = () => {
                                 type="email"
                                 name="email"
                                 id="email"
-                                className="form__input"
+                                className={`form__input ${error ? 'form__input--error' : ''}`}
                                 placeholder='Ingresa tu correo electrónico'
                                 onChange={onChangeEmail}
                                 value={email}
@@ -102,7 +103,7 @@ const LoginPage = () => {
                                 type="password"
                                 name="password"
                                 id="password"
-                                className="form__input"
+                                className={`form__input ${error ? 'form__input--error' : ''}`}
                                 placeholder='Ingresa tu contraseña'
                                 minLength="6"
                                 onChange={onChangePassword}

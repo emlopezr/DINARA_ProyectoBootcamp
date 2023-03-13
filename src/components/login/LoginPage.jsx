@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import '../../styles/LoginPage.css'
-import '../../styles/loading.css'
 
 const LoginPage = () => {
     const [email, setEmail] = useState('')
@@ -21,31 +20,34 @@ const LoginPage = () => {
 
         // Hacer el POST a la API con estos datos
         const ingreso = { email, password }
-        console.log("🚀 ~ file: LoginPage.jsx:14 ~ onSubmit ~ ingreso:", ingreso)
 
         // TODO: POST al backend con los datos de ingreso
 
         // Recibiremos un objeto dependiendo de si es correcto o no
+        setTimeout(() => { // TODO: Quitar el SetTimeout, es solo para simular
+            // Manejo si la petición fue exitosa
+            const { state, id, name, role, message } = {
+                "state": true,
+                "id": 1,
+                "name": "Emmanuel López Rodríguez",
+                "role": "estudiante",
+                "message": "Ingreso exitoso"
+            }
+            setInfo({ name, role, message })
+            setLogged(true)
+            setLoading(false)
+            // TODO: Mandar al redux y el localStorage el usuario
 
-        // Manejo si la petición fue exitosa
-        // const { state, id, name, role, message } = {
-        //     "state": true,
-        //     "id": 1,
-        //     "name": "Emmanuel López Rodríguez",
-        //     "role": "administrador",
-        //     "message": "Ingreso exitoso"
-        // }
-        // setInfo({ name, role, message })
-        // setLogged(true)
-        // TODO: Mandar al redux y el localStorage el usuario
+            // Manejo si la petición falló
+            // const { state, message } = {
+            //     "state": false,
+            //     "message": "Contraseña o email invalido"
+            // }
+            // setInfo({ message })
+            // setError(true)
+            // setLoading(false)
+        }, 2000)
 
-        // Manejo si la petición falló
-        const { state, message } = {
-            "state": false,
-            "message": "Contraseña o email invalido"
-        }
-        setInfo({ message })
-        setError(true)
     }
 
     return (
@@ -57,10 +59,10 @@ const LoginPage = () => {
 
                     <div className="text">
                         <h1 className="text__title">
-                            Bienvenido
+                            Bienvenido ;)
                         </h1>
                         <p className="text__subtitle">
-                            Ingresa la información solicitada para entrar
+                            Ingresa la información solicitada para entrar.
                         </p>
                     </div>
 
@@ -68,7 +70,7 @@ const LoginPage = () => {
                     {error &&
 
                         <div className="alert">
-                            <i className="fa-regular fa-circle-xmark"></i>
+                            <i className="fa-solid fa-circle-xmark"></i>
                             {info?.message}
                         </div>
 
@@ -80,7 +82,10 @@ const LoginPage = () => {
                     >
 
                         <div className="form__group">
-                            <label htmlFor="email" className="form__label">
+                            <label
+                                htmlFor="email"
+                                className={`form__label ${error ? 'form__label--error' : ''}`}
+                            >
                                 Correo electrónico
                             </label>
                             <input
@@ -96,8 +101,10 @@ const LoginPage = () => {
                         </div>
 
                         <div className="form__group">
-                            <label htmlFor="password" className="form__label">
-                                Contraseña
+                            <label
+                                htmlFor="email"
+                                className={`form__label ${error ? 'form__label--error' : ''}`}
+                            >                                Contraseña
                             </label>
                             <input
                                 type="password"
@@ -131,17 +138,19 @@ const LoginPage = () => {
             {logged &&
 
                 <div className="success">
+                    <i className="fa-regular fa-circle-check success__icon"></i>
+
                     <h1 className="success__title">
                         {info?.message}
                     </h1>
 
                     <h2 className="success__subtitle">
-                        {info?.name}
-
                         {(info?.role == 'estudiante')
                             ? <i className="fa-solid fa-graduation-cap"></i>
                             : <i className="fa-solid fa-crown"></i>
                         }
+
+                        {info?.name}
                     </h2>
                 </div>
 

@@ -1,11 +1,19 @@
-body {
+.login-page {
+    display: flex;
+    flex-direction: row;
+}
+
+.login-background {
+    width: 50%;
+    height: 100vh;
     background-image: url("../assets/login_bg1.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    display: block;
 }
 
-.login-page {
+.login-block {
     display: grid;
     place-items: center;
     width: 50%;
@@ -215,7 +223,11 @@ body {
 }
 
 @media only screen and (max-width: 992px) {
-    .login-page {
+    .login-block {
         width: 100%;
+    }
+
+    .login-background{
+        display: none;
     }
 }

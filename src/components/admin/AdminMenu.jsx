@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux'
 import '../../styles/AdminPage.css'
 
 const AdminMenu = () => {
-    // Sacar los daros de Redux
+    // Sacar los datos del usuario del store de Redux
     const userData = useSelector(state => state.auth)
 
     return (
         <div className='admin-menu'>
 
-            {/* Hola {userData?.name} */}
+            Hola {userData?.name}
 
         </div>
     )

@@ -71,7 +71,6 @@ const LoginPage = () => {
                 setInfo({ name, role, message })
                 setLogged(true)
                 dispatch(login({ "status": state, id, name, role }))
-                // TODO: Mandar al localStorage el usuario
             } else {
                 // Manejo de petición fallida -> Mostrar mensaje de error
                 setInfo({ message })
@@ -189,7 +188,7 @@ const LoginPage = () => {
                 }
 
             </div>
-            
+
             <div className="login-background"></div>
         </div>
     )

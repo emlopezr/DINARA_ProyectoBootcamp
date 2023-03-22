@@ -27,7 +27,7 @@
 }
 
 .user__name {
-    color: #555;
+    color: #555555;
     margin: 0;
 }
 
@@ -57,11 +57,11 @@
     margin: 0;
     background: linear-gradient(
         90deg,
-        #76c893 0%,
-        #52b69a 25%,
+        #1a759f 0%,
+        #168aad 25%,
         #34a0a4 50%,
-        #168aad 75%,
-        #1a759f 100%
+        #52b69a 75%,
+        #76c893 100%
     );
     background-clip: text;
     -webkit-background-clip: text;
@@ -105,28 +105,28 @@
 }
 
 .page__link--active {
-    background: #76c893;
+    background: #1a759f;
     background: linear-gradient(
         90deg,
-        #76c893 0%,
-        #52b69a 25%,
+        #1a759f 0%,
+        #168aad 25%,
         #34a0a4 50%,
-        #168aad 75%,
-        #1a759f 100%
+        #52b69a 75%,
+        #76c893 100%
     );
     color: #ffffff;
     font-weight: bold;
 }
 
 .page__link--active:hover {
-    background: #53ba78;
+    background: #166387;
     background: linear-gradient(
         90deg,
-        #53ba78 0%,
-        #429d84 25%,
+        #166387 0%,
+        #127593 25%,
         #2c878b 50%,
-        #127593 75%,
-        #166387 100%
+        #429d84 75%,
+        #53ba78 100%
     );
 }
 
@@ -145,6 +145,7 @@
 .admin-content__title {
     margin: 0;
     font-size: 2rem;
+    color: #081c15;
 }
 
 .admin-menu-card {
@@ -153,21 +154,83 @@
     -moz-border-radius: 1rem;
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
-    background-color: red;
     display: flex;
     align-items: center;
     padding: 2rem;
     gap: 2rem;
     color: #ffffff;
     cursor: pointer;
-    background: #76c893;
+}
+
+.admin-menu-card:nth-child(2) {
+    background: #1a7431;
     background: linear-gradient(
         90deg,
-        #76c893 0%,
-        #52b69a 25%,
-        #34a0a4 50%,
-        #168aad 75%,
-        #1a759f 100%
+        #1a7431 0%,
+        #208b3a 25%,
+        #25a244 50%,
+        #2dc653 75%,
+        #4ad66d 100%
+    );
+}
+
+.admin-menu-card:nth-child(2):hover {
+    background: #135724;
+    background: linear-gradient(
+        90deg,
+        #135724 0%,
+        #18682b 25%,
+        #1b7933 50%,
+        #21943e 75%,
+        #27b049 100%
+    );
+}
+
+.admin-menu-card:nth-child(3) {
+    background: #ff6d00;
+    background: linear-gradient(
+        90deg,
+        #ff6d00 0%,
+        #ff7900 25%,
+        #ff8500 50%,
+        #ff9100 75%,
+        #ff9e00 100%
+    );
+}
+
+.admin-menu-card:nth-child(3):hover {
+    background: #bf5100;
+    background: linear-gradient(
+        90deg,
+        #bf5100 0%,
+        #bf5a00 25%,
+        #bf6300 50%,
+        #bf6c00 75%,
+        #bf7600 100%
+    );
+}
+
+.admin-menu-card:nth-child(4) {
+    background: #3c096c;
+    background: linear-gradient(
+        90deg,
+        #3c096c 0%,
+        #5a189a 25%,
+        #7b2cbf 50%,
+        #9d4edd 75%,
+        #c77dff 100%
+    );
+}
+
+.admin-menu-card:nth-child(4):hover {
+    background: #2d0651;
+    background: linear-gradient(
+        90deg,
+        #2d0651 0%,
+        #431173 25%,
+        #5c208f 50%,
+        #7824bc 75%,
+        #9e1eff 100%
     );
 }
 

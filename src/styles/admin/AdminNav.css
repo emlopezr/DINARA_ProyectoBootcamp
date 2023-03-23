@@ -27,5 +27,47 @@
 
 .user__logout {
     font-size: 1.5rem;
-    color: #2093c8;
+    color: #1a759f;
+}
+
+.user__logout:hover {
+    color: #2da5dc;
+}
+.admin__title.admin__title--nav {
+    display: none;
+}
+
+.nav__bars{
+    font-size: 1.5rem;
+    color: #1a759f;
+    display: none;
+    cursor: pointer;
+}
+
+.nav__bars:hover {
+    color: #2da5dc;
+}
+
+@media only screen and (max-width: 992px) {
+    .admin-nav {
+        background-color: #ffffff;
+        margin: 0;
+        padding: 1rem;
+        border: none;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .admin__title.admin__title--nav {
+        display: flex;
+    }
+
+    .user__name {
+        display: none;
+    }
+
+    .nav__bars {
+        display: block;
+        font-size: 1.5rem;
+    }
 }

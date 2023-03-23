@@ -23,16 +23,35 @@ const AdminPage = () => {
     // Estado para manejar la página mostrada
     const [currentPage, setCurrentPage] = useState('home')
 
-    return (
-        <div className='admin-page'>
-            <AdminSidebar currentPage={currentPage} setCurrentPage={setCurrentPage}/>
-            <AdminNav name={userData?.name} />
+    // Estado para manejar el menú desplegable en la versión mobile
+    const [sidebarDisplay, setSidebarDisplay] = useState(false)
 
-            <div className="admin-content">
-                {(currentPage === 'home') && <AdminHome setCurrentPage={setCurrentPage}/>}
+    // Cerrar el sidebar cuando se cambia de página
+    const onChangePage = (page) => {
+        setCurrentPage(page)
+        setSidebarDisplay(false)
+    }
+
+    return (
+        <div className={sidebarDisplay ? 'admin-page admin-page--sidebar' : 'admin-page'}>
+            <AdminSidebar
+                currentPage={currentPage}
+                sidebarDisplay={sidebarDisplay}
+                onChangePage={onChangePage}
+                />
+
+            <AdminNav
+                name={userData?.name}
+                sidebarDisplay={sidebarDisplay}
+                setSidebarDisplay={setSidebarDisplay}
+                onChangePage={onChangePage}
+            />
+
+            <div className={sidebarDisplay ? 'admin-content admin-content--sidebar' : 'admin-content'}>
+                {(currentPage === 'home') && <AdminHome setCurrentPage={setCurrentPage} />}
                 {(currentPage === 'students') && <AdminStudents />}
                 {(currentPage === 'questions') && <AdminQuestions />}
-                {(currentPage === 'profile') && <AdminProfile userData={userData}/>}
+                {(currentPage === 'profile') && <AdminProfile userData={userData} />}
             </div>
         </div>
     )

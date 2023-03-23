@@ -22,6 +22,7 @@
     gap: 1rem;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .title__text {
@@ -84,4 +85,28 @@
 
 .link__text {
     margin: 0;
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 993px){
+    .admin__title {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .admin-sidebar {
+        display: none;
+    }
+
+    .admin-sidebar.admin-sidebar--show {
+        display: block;
+    }
+
+    .admin-sidebar.admin-sidebar--show .admin__title{
+        display: none;
+    }
+
+    .admin-sidebar.admin-sidebar--show .sidebar__menu{
+        margin: 0;
+    }
 }

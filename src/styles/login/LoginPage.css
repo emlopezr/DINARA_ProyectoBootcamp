@@ -156,15 +156,19 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
+
 .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
 }
+
 .lds-ring div:nth-child(2) {
     animation-delay: -0.3s;
 }
+
 .lds-ring div:nth-child(3) {
     animation-delay: -0.15s;
 }
+
 @keyframes lds-ring {
     0% {
         transform: rotate(0deg);
@@ -227,7 +231,7 @@
         width: 100%;
     }
 
-    .login-background{
+    .login-background {
         display: none;
     }
 }

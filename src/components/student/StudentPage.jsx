@@ -8,7 +8,7 @@ const StudentPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!userData.status || userData?.role !== 'estudiante') {
+        if (!userData.status || userData?.role !== 'student') {
             navigate('/');
         }
     }, [userData])

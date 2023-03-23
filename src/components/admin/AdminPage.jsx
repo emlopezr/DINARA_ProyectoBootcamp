@@ -15,7 +15,7 @@ const AdminPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!userData.status || userData?.role !== 'administrador') {
+        if (!userData.status || userData?.role !== 'admin') {
             navigate('/');
         }
     }, [userData])
@@ -38,7 +38,7 @@ const AdminPage = () => {
                 currentPage={currentPage}
                 sidebarDisplay={sidebarDisplay}
                 onChangePage={onChangePage}
-                />
+            />
 
             <AdminNav
                 name={userData?.name}

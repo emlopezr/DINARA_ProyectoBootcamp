@@ -5,6 +5,7 @@ const initialState = {
     id: null,
     name: null,
     role: null,
+    token: null,
 }
 
 export const authSlice = createSlice({
@@ -12,19 +13,21 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         login: (state, { payload }) => {
-            const { status, id, name, role } = payload;
+            const { status, id, name, role, token } = payload;
 
             state.status = status
             state.id = id
             state.name = name
             state.role = role
+            state.token = token
         },
         
         logout: (state) => {
-            state.status = false
+            state.status = initialState.status
             state.id = initialState.id
             state.name = initialState.name
             state.role = initialState.role
+            state.token = initialState.token
         }
     }
 });

@@ -21,10 +21,10 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (userData.status) {
+        if (userData?.status) {
             // Conseguir el enlace al que debería ir el usuario según su rol
-            const roleURL = (userData?.role == 'estudiante') ? '/student' : '/admin'
-
+            const roleURL = `/${userData?.role}`
+            
             if (!logged) {
                 // Redireccionar al usuario automáticamente
                 navigate(roleURL);
@@ -33,50 +33,53 @@ const LoginPage = () => {
                 setTimeout(() => { navigate(roleURL) }, 2000);
             }
         }
-    }, [userData, logged])
+    }, [logged])
 
     // Manejo de eventos del formulario
     const onChangeEmail = e => setEmail(e.target.value)
     const onChangePassword = e => setPassword(e.target.value)
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
 
         // Poner el estado de carga mientras se hace la petición
         setLoading(true)
 
-        // TODO: Hacer el POST a la API del backend con estos datos
+        // Hacer la petición POST a la API para loguearse
         const credenciales = { email, password }
 
-        // ! Eliminar estos datos de prueba
-        const { state, id, name, role, message } = {
-            "state": true,
-            "id": 1,
-            "name": "Emmanuel López Rodríguez",
-            "role": "administrador",
-            "message": "Ingreso exitoso"
+        const loginPOST = async (credenciales) => {
+            const api_url = `http://localhost:4001/api/v1/login`
+            const response = await fetch(api_url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(credenciales),
+            })
+            const data = await response.json();
+
+            return data
         }
 
-        // const { state, message } = {
-        //     "state": false,
-        //     "message": "Contraseña o email invalido"
-        // }
+        const loginData = await loginPOST(credenciales)
 
-        // TODO: Quitar el SetTimeout, es solo para simular la carga
-        setTimeout(() => {
-            setLoading(false)
+        // Quitar el estado de carga
+        setLoading(false)
 
-            if (state) {
-                // Manejo si la petición fue exitosa -> Pantalla de bienvenida y guardar en Redux
-                setInfo({ name, role, message })
-                setLogged(true)
-                dispatch(login({ "status": state, id, name, role }))
-            } else {
-                // Manejo de petición fallida -> Mostrar mensaje de error
-                setInfo({ message })
-                setError(true)
-            }
-        }, 2000)
+        // Manejo del login dependiendo de la respuesta del API
+        if (loginData?.state) {
+            // Manejo si la petición fue exitosa -> Pantalla de bienvenida y guardar en Redux
+            const { state, id, name, role, message, token } = loginData     
+            setInfo({ name, role, message })
+            setLogged(true)
+            dispatch(login({ "status": state, id, name, role, token }))
+        } else {            
+            // Manejo de petición fallida -> Mostrar mensaje de error
+            const { message } = loginData
+            setInfo({ message })
+            setError(true)
+        }
     }
 
     // TODO: Refactorizar el render condicional, pasar las cosas a componentes independientes
@@ -177,7 +180,7 @@ const LoginPage = () => {
                         </h1>
 
                         <h2 className="success__subtitle">
-                            {(info?.role == 'estudiante')
+                            {(info?.role == 'student')
                                 ? <i className="fa-solid fa-graduation-cap"></i>
                                 : <i className="fa-solid fa-crown"></i>
                             }

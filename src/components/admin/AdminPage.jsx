@@ -6,8 +6,8 @@ import AdminSidebar from './AdminSidebar'
 import AdminHome from './AdminHome'
 import AdminStudents from './AdminStudents'
 import AdminQuestions from './AdminQuestions'
-import '../../styles/AdminPage.css'
 import AdminProfile from './AdminProfile'
+import '../../styles/admin/AdminPage.css'
 
 const AdminPage = () => {
     // Redirigir al usuario cuando no esté logueado
@@ -15,7 +15,7 @@ const AdminPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!userData.status || userData?.role === 'estudiante') {
+        if (!userData.status || userData?.role !== 'administrador') {
             navigate('/');
         }
     }, [userData])
@@ -29,14 +29,11 @@ const AdminPage = () => {
             <AdminNav name={userData?.name} />
 
             <div className="admin-content">
-
                 {(currentPage === 'home') && <AdminHome setCurrentPage={setCurrentPage}/>}
                 {(currentPage === 'students') && <AdminStudents />}
                 {(currentPage === 'questions') && <AdminQuestions />}
-                {(currentPage === 'profile') && <AdminProfile />}
-                
+                {(currentPage === 'profile') && <AdminProfile userData={userData}/>}
             </div>
-
         </div>
     )
 }

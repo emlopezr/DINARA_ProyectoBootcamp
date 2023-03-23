@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../styles/admin/AdminSidebar.css'
 
 const AdminSidebar = ({ currentPage, setCurrentPage }) => {
     return (

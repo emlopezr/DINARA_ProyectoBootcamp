@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../store/auth/authSlice.js'
 import { useNavigate } from 'react-router-dom'
-import '../../styles/LoginPage.css'
+import '../../styles/login/LoginPage.css'
 
 const LoginPage = () => {
     // Uso de Redux para leer y guardar el estado del usuario
@@ -33,7 +33,7 @@ const LoginPage = () => {
                 setTimeout(() => { navigate(roleURL) }, 2000);
             }
         }
-    }, [logged])
+    }, [userData, logged])
 
     // Manejo de eventos del formulario
     const onChangeEmail = e => setEmail(e.target.value)
@@ -79,6 +79,7 @@ const LoginPage = () => {
         }, 2000)
     }
 
+    // TODO: Refactorizar el render condicional, pasar las cosas a componentes independientes
     return (
         <div className='login-page'>
             <div className='login-block'>

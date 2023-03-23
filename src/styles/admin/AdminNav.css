@@ -1,0 +1,31 @@
+.admin-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 2rem;
+    padding: 1.5rem;
+    grid-area: nav;
+    border-bottom: 2px solid #aaaaaa;
+}
+
+.nav__user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user__name {
+    color: #3b3b3b;
+    margin: 0;
+}
+
+.user__button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.user__logout {
+    font-size: 1.5rem;
+    color: #2093c8;
+}

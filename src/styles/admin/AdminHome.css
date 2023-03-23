@@ -1,0 +1,109 @@
+.admin-content-home {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2rem repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.admin-home-card {
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.admin-home-card:nth-child(2) {
+    background: #1a7431;
+    background: linear-gradient(
+        90deg,
+        #1a7431 0%,
+        #208b3a 25%,
+        #25a244 50%,
+        #2dc653 75%,
+        #4ad66d 100%
+    );
+}
+
+.admin-home-card:nth-child(2):hover {
+    background: #135724;
+    background: linear-gradient(
+        90deg,
+        #135724 0%,
+        #18682b 25%,
+        #1b7933 50%,
+        #21943e 75%,
+        #27b049 100%
+    );
+}
+
+.admin-home-card:nth-child(3) {
+    background: #ff6d00;
+    background: linear-gradient(
+        90deg,
+        #ff6d00 0%,
+        #ff7900 25%,
+        #ff8500 50%,
+        #ff9100 75%,
+        #ff9e00 100%
+    );
+}
+
+.admin-home-card:nth-child(3):hover {
+    background: #bf5100;
+    background: linear-gradient(
+        90deg,
+        #bf5100 0%,
+        #bf5a00 25%,
+        #bf6300 50%,
+        #bf6c00 75%,
+        #bf7600 100%
+    );
+}
+
+.admin-home-card:nth-child(4) {
+    background: #3c096c;
+    background: linear-gradient(
+        90deg,
+        #3c096c 0%,
+        #5a189a 25%,
+        #7b2cbf 50%,
+        #9d4edd 75%,
+        #c77dff 100%
+    );
+}
+
+.admin-home-card:nth-child(4):hover {
+    background: #2d0651;
+    background: linear-gradient(
+        90deg,
+        #2d0651 0%,
+        #431173 25%,
+        #5c208f 50%,
+        #7824bc 75%,
+        #9e1eff 100%
+    );
+}
+
+.card__icon {
+    font-size: 5rem;
+}
+
+.card__info {
+    text-align: justify;
+}
+
+.info__title {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+}
+
+.info__text {
+    margin: 0;
+}

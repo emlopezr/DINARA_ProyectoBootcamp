@@ -187,6 +187,9 @@ const LoginPage = () => {
 
                             {info?.name}
                         </h2>
+
+                        {/* Spinner de carga */}
+                        <span class="loader"></span>
                     </div>
 
                 }

@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import AdminNav from './AdminNav'
 import AdminSidebar from './AdminSidebar'
 import AdminHome from './AdminHome'
-import AdminStudents from './AdminStudents'
 import AdminQuestions from './AdminQuestions'
 import AdminProfile from './AdminProfile'
+import AdminStudents from './students/AdminStudents'
 import '../../styles/admin/AdminPage.css'
 
 const AdminPage = () => {
@@ -49,7 +49,7 @@ const AdminPage = () => {
 
             <div className={sidebarDisplay ? 'admin-content admin-content--sidebar' : 'admin-content'}>
                 {(currentPage === 'home') && <AdminHome setCurrentPage={setCurrentPage} />}
-                {(currentPage === 'students') && <AdminStudents />}
+                {(currentPage === 'students') && <AdminStudents userData={userData} />}
                 {(currentPage === 'questions') && <AdminQuestions />}
                 {(currentPage === 'profile') && <AdminProfile userData={userData} />}
             </div>

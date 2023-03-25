@@ -49,8 +49,8 @@ const LoginPage = () => {
         const credenciales = { email, password }
 
         const loginPOST = async (credenciales) => {
-            const api_url = `http://localhost:4001/api/v1/login`
-            const response = await fetch(api_url, {
+            const apiURL = `http://localhost:4001/api/v1/login`
+            const response = await fetch(apiURL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -189,7 +189,7 @@ const LoginPage = () => {
                         </h2>
 
                         {/* Spinner de carga */}
-                        <span class="loader"></span>
+                        <span className="loader"></span>
                     </div>
 
                 }

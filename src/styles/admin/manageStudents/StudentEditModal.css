@@ -1,0 +1,74 @@
+.modal-edit {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    gap: 1rem;
+}
+
+.modal__title {
+    margin: 0;
+}
+
+.modal__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.modal__input-group  {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal__input-group label {
+    color: #081c15;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.modal__input-group input,
+.modal__input-group select {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border: 2px solid #bbbbbb;
+    color: #333333;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+
+.info-student span {
+    font-weight: bold;
+}
+
+.modal__submit {
+    grid-column: 1 / -1;
+    padding: 1rem;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    background: #76c893;
+    background: linear-gradient(
+        90deg,
+        #76c893 0%,
+        #52b69a 25%,
+        #34a0a4 50%,
+        #168aad 75%,
+        #1a759f 100%
+    );
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .modal__form {
+        grid-template-columns: 1fr;
+    }
+}

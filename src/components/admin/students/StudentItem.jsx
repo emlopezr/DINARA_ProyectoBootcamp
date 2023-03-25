@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StudentItem = ({ student }) => {
+const StudentItem = ({ student, toggleModalView, toggleModalEdit, setDataModal }) => {
     const {
         firstName,
         secondName,
@@ -11,6 +11,17 @@ const StudentItem = ({ student }) => {
         phone
     } = student
 
+    // Manejo de edición y vista
+    const onViewInfo = () => {
+        toggleModalView()
+        setDataModal(student)
+    }
+
+    const onEditStudent = () => {
+        toggleModalEdit()
+        setDataModal(student)
+    }
+
     return (
         <tr>
             <td>{firstName} {secondName} {surname} {secondSurName}</td>
@@ -18,11 +29,17 @@ const StudentItem = ({ student }) => {
             <td className='mobile-hidden'>{email}</td>
             <td className='mobile-hidden'>{phone}</td>
             <td className="actions-column">
-                <button className="view-button">
+                <button
+                    className="view-button"
+                    onClick={onViewInfo}
+                >
                     <i className="fa-solid fa-eye"></i>
                 </button>
 
-                <button className="edit-button">
+                <button
+                    className="edit-button"
+                    onClick={onEditStudent}
+                >
                     <i className="fa-sharp fa-solid fa-user-pen"></i>
                 </button>
             </td>

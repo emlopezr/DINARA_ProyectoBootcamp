@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import StudentList from './StudentList'
+import Modal from '../../Modal'
+import StudentViewModal from './StudentViewModal'
+import StudentEditModal from './StudentEditModal'
+import { useModal } from '../../../hooks/useModal'
 import '../../../styles/admin/AdminStudents.css'
 
 const AdminStudents = ({ userData }) => {
     // Estado para guardar los usuarios recibidos o mensaje de error
     const [students, setStudents] = useState([])
     const [error, setError] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
 
     // Llamado a la API para conseguir los usuarios registrados
     useEffect(() => {
+
         const getUsers = async () => {
+            setLoading(true)
+
             const apiURL = `http://127.0.0.1:4001/api/v1/user/getUsers`
             const response = await fetch(apiURL, {
                 method: 'GET',
@@ -19,6 +27,7 @@ const AdminStudents = ({ userData }) => {
                 },
             })
             const data = await response.json();
+            setLoading(false)
 
             // Manejo de peticiones sin autorización
             if (data?.status !== 401) {
@@ -68,6 +77,12 @@ const AdminStudents = ({ userData }) => {
         })
     }
 
+    // Uso de las ventanas modales
+    const [isOpenModalCreate, toggleModalCreate] = useModal(false)
+    const [isOpenModalView, toggleModalView] = useModal(false)
+    const [isOpenModalEdit, toggleModalEdit] = useModal(false)
+    const [dataModal, setDataModal] = useState({})
+
     // Ventana modal para la creación de un nuevo estudiante
     const onCreateStudent = () => {
 
@@ -77,10 +92,7 @@ const AdminStudents = ({ userData }) => {
         <div className='admin-content-students'>
             <h2 className="admin-content__title">Administrar estudiantes</h2>
 
-            {
-                // TODO: Paginador (cada 10 elementos)
-            }
-            {!error &&
+            {!error && !loading &&
                 <>
                     {/* Funcionalidad de búsqueda */}
                     <div className="search-bar">
@@ -171,7 +183,12 @@ const AdminStudents = ({ userData }) => {
 
                     {(filteredStudents.length > 0) &&
                         <div className="admin-students__list">
-                            <StudentList students={filteredStudents} />
+                            <StudentList
+                                students={filteredStudents}
+                                toggleModalView={toggleModalView}
+                                toggleModalEdit={toggleModalEdit}
+                                setDataModal={setDataModal}
+                            />
                         </div>
                     }
 
@@ -184,19 +201,45 @@ const AdminStudents = ({ userData }) => {
 
                     <button
                         className="create-student"
-                        onClick={onCreateStudent}
+                        onClick={toggleModalCreate}
                     >
                         Crear un nuevo estudiante
                     </button>
                 </>
             }
 
-            {error &&
+            {error && !loading &&
                 <div className="error-alert">
                     <i className="fa-solid fa-circle-exclamation"></i>
                     <span>Ha ocurrido un error:</span> "{message}", por favor reinicia tu sesión para arreglarlo
                 </div>
             }
+
+            {loading &&
+                <div className="loading-state">
+                    <span className="users-loader"></span>
+                </div>
+            }
+
+            {/* Modal de vista de usuario */}
+            <Modal isOpen={isOpenModalView} toggleModal={toggleModalView}>
+                <StudentViewModal dataModal={dataModal} />
+            </Modal>
+
+            {/* Modal de edición de usuario */}
+            <Modal isOpen={isOpenModalEdit} toggleModal={toggleModalEdit}>
+                <StudentEditModal dataModal={dataModal}/>
+            </Modal>
+
+            {/* Modal de creación de usuario */}
+            <Modal
+                isOpen={isOpenModalCreate}
+                toggleModal={toggleModalCreate}
+            >
+                <h4>Hola</h4>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id dolores architecto quod accusamus eius distinctio consequatur, omnis quis laboriosam quos, reiciendis, est cumque quam officia. Illo earum ut cumque explicabo.</p>
+                <button onClick={() => console.log('Desde el modal')}>Hola</button>
+            </Modal>
         </div>
     )
 }

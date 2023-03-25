@@ -70,6 +70,18 @@
     cursor: pointer;
 }
 
+.clear-inputs:hover {
+    background: #ad4503;
+    background: linear-gradient(
+        90deg,
+        #ad4503 0%,
+        #a52301 25%,
+        #9c0000 50%,
+        #750106 75%,
+        #4f030b 100%
+    );
+}
+
 .students-table {
     width: 100%;
     margin: 1rem 0;
@@ -126,8 +138,16 @@
     background-color: #52b69a;
 }
 
+.view-button:hover {
+    background-color: #3a8b74;
+}
+
 .edit-button {
     background-color: #f4a261;
+}
+
+.edit-button:hover {
+    background-color: #ee7311;
 }
 
 .error-alert {
@@ -164,20 +184,64 @@
     -moz-border-radius: 0.5rem;
     -ms-border-radius: 0.5rem;
     -o-border-radius: 0.5rem;
-    background: #1a7431;
+    background: #76c893;
     background: linear-gradient(
         90deg,
-        #1a7431 0%,
-        #208b3a 25%,
-        #25a244 50%,
-        #2dc653 75%,
-        #4ad66d 100%
+        #76c893 0%,
+        #52b69a 25%,
+        #34a0a4 50%,
+        #168aad 75%,
+        #1a759f 100%
     );
     cursor: pointer;
 }
 
+.create-student:hover {
+    background: #53ba78;
+    background: linear-gradient(
+        90deg,
+        #53ba78 0%,
+        #429d84 25%,
+        #2c878b 50%,
+        #127593 75%,
+        #166387 100%
+    );
+}
+
 .hidden {
     display: none;
+}
+
+.loading-state {
+    display: flex;
+    align-items: center;
+}
+
+.users-loader {
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #ccc;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    -webkit-animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @media screen and (max-width: 768px) {

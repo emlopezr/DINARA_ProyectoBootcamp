@@ -81,8 +81,7 @@ const LoginPage = () => {
             setError(true)
         }
     }
-
-    // TODO: Refactorizar el render condicional, pasar las cosas a componentes independientes
+    
     return (
         <div className='login-page'>
             <div className='login-block'>

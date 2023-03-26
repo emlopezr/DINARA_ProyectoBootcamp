@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../store/auth/authSlice.js'
 import { useNavigate } from 'react-router-dom'
-import '../../styles/login/LoginPage.css'
+import '../../styles/loginView/LoginPage.css'
 
 const LoginPage = () => {
     // Uso de Redux para leer y guardar el estado del usuario

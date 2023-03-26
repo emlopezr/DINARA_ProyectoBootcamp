@@ -4,7 +4,7 @@ import Modal from '../../utilities/Modal'
 import StudentViewModal from './StudentViewModal'
 import StudentEditModal from './StudentEditModal'
 import StudentCreateModal from './StudentCreateModal'
-import PageSelector from './PageSelector'
+import PageSelector from '../../utilities/PageSelector'
 import { useModal } from '../../../hooks/useModal'
 
 const AdminStudents = ({ userData }) => {

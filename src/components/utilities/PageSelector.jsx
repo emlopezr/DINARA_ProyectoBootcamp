@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../styles/adminView/manageStudents/PageSelector.css'
+import '../../styles/utilities/PageSelector.css'
 
 const PageSelector = ({ pages, page, setPage }) => {
     const numbers = [...Array(pages).keys()]

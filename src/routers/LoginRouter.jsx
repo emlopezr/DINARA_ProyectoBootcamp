@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import LoginPage from '../components/login/LoginPage'
+import LoginPage from '../components/loginView/LoginPage'
 
 const LoginRouter = () => {
     return (

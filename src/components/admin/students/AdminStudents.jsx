@@ -168,12 +168,15 @@ const AdminStudents = ({ userData }) => {
                                 />
                             </div>
 
-                            <button
-                                className="clear-inputs"
-                                onClick={onClearInputs}
-                            >
-                                Limpiar campos
-                            </button>
+                            <div className="search-group search-group--button">
+                                <button
+                                    className="clear-inputs"
+                                    onClick={onClearInputs}
+                                >
+                                    Limpiar campos
+                                </button>
+                            </div>
+
                         </div>
 
                     </div>
@@ -238,6 +241,7 @@ const AdminStudents = ({ userData }) => {
                 <StudentCreateModal
                     toggleModal={toggleModalCreate}
                     setChanges={setChanges}
+                    isOpenModalCreate={isOpenModalCreate}
                 />
             </Modal>
         </div>

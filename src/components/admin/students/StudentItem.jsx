@@ -6,6 +6,7 @@ const StudentItem = ({ student, toggleModalView, toggleModalEdit, setDataModal }
         secondName,
         surname,
         secondSurName,
+        typeDocument,
         documentNumber,
         email,
         phone
@@ -25,7 +26,13 @@ const StudentItem = ({ student, toggleModalView, toggleModalEdit, setDataModal }
     return (
         <tr>
             <td>{firstName} {secondName} {surname} {secondSurName}</td>
-            <td className='mobile-hidden'>{documentNumber}</td>
+            <td className='mobile-hidden'>
+                {typeDocument === 1 && 'CC '}
+                {typeDocument === 2 && 'TI '}
+                {typeDocument === 3 && 'CE '}
+                {!typeDocument && 'CC '}
+                - {documentNumber}
+            </td>
             <td className='mobile-hidden'>{email}</td>
             <td className='mobile-hidden'>{phone}</td>
             <td className="actions-column">

@@ -4,14 +4,14 @@ import '../../../styles/admin/manageStudents/StudentFormModal.css'
 const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit }) => {
     // Manejo de evento de edición
     const [inputValues, setInputValues] = useState({
-        firstName: dataModal?.firstName,
-        secondName: dataModal?.secondName,
-        surname: dataModal?.surname,
-        secondSurName: dataModal?.secondSurName,
-        typeDocument: dataModal?.typeDocument,
-        documentNumber: dataModal?.documentNumber,
-        email: dataModal?.email,
-        phone: dataModal?.phone,
+        firstName: '',
+        secondName: '',
+        surname: '',
+        secondSurName: '',
+        typeDocument: '',
+        documentNumber: '',
+        email: '',
+        phone: '',
     })
 
     const onEditStudent = (e) => {
@@ -23,14 +23,14 @@ const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit 
     // Limpiar los datos cada vez que se cierra el modal
     useEffect(() => {
         setInputValues({
-            firstName: dataModal?.firstName,
-            secondName: dataModal?.secondName,
-            surname: dataModal?.surname,
-            secondSurName: dataModal?.secondSurName,
-            typeDocument: dataModal?.typeDocument,
-            documentNumber: dataModal?.documentNumber,
-            email: dataModal?.email,
-            phone: dataModal?.phone,
+            firstName: dataModal?.firstName || '',
+            secondName: dataModal?.secondName || '',
+            surname: dataModal?.surname || '',
+            secondSurName: dataModal?.secondSurName || '',
+            typeDocument: dataModal?.typeDocument || '',
+            documentNumber: dataModal?.documentNumber || '',
+            email: dataModal?.email || '',
+            phone: dataModal?.phone || '',
         })
     }, [isOpenModalEdit])
 
@@ -117,7 +117,7 @@ const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit 
                 <div className="modal__input-group">
                     <label htmlFor="telefono">Teléfono</label>
                     <input
-                        type="tel"
+                        type="number"
                         name='telefono'
                         value={inputValues?.phone}
                         onChange={(e) => setInputValues({ ...inputValues, phone: e.target.value })}

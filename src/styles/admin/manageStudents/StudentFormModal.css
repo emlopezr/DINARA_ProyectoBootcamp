@@ -80,6 +80,26 @@
     );
 }
 
+.modal__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #c0392b;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.modal__error i {
+    font-size: 7rem;
+}
+
+.modal__error p {
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
 @media screen and (max-width: 768px) {
     .modal__form {
         grid-template-columns: 1fr;

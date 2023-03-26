@@ -49,7 +49,14 @@
     -o-border-radius: 0.5rem;
 }
 
+.search-group.search-group--button {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
 .clear-inputs {
+    height: 2.5rem;
     color: #ffffff;
     font-weight: bold;
     border: none;

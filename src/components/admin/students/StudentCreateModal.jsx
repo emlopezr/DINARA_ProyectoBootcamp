@@ -1,45 +1,85 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import '../../../styles/admin/manageStudents/StudentFormModal.css'
 
-const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit }) => {
-    // Manejo de evento de edición
+const StudentCreateModal = ({ toggleModal, setChanges }) => {
+    // Para conseguir el token de autorización
+    const userData = useSelector(state => state.auth)
+
+    // Manejo de evento de creación de estudiantes
     const [inputValues, setInputValues] = useState({
-        firstName: dataModal?.firstName,
-        secondName: dataModal?.secondName,
-        surname: dataModal?.surname,
-        secondSurName: dataModal?.secondSurName,
-        typeDocument: dataModal?.typeDocument,
-        documentNumber: dataModal?.documentNumber,
-        email: dataModal?.email,
-        phone: dataModal?.phone,
+        firstName: '',
+        secondName: '',
+        surname: '',
+        secondSurName: '',
+        typeDocument: '',
+        documentNumber: '',
+        email: '',
+        phone: '',
+        password: ''
     })
 
-    const onEditStudent = (e) => {
+    const onCreateStudent = async (e) => {
         e.preventDefault()
 
-        // TODO: Falta hacer el PUT para editar, pero no tengo ID para armar la ruta
+        // Petición POST a la Api para crear un usuario nuevo
+        const createUserPOST = async (datos) => {
+            const apiURL = `http://localhost:4001/api/v1/user/create`
+            const response = await fetch(apiURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userData?.token}`
+                },
+                body: JSON.stringify(datos),
+            })
+            const data = await response.json();
+
+            return data
+        }
+
+        const bodyPOST = {
+            "firstName": inputValues?.firstName,
+            "secondName": inputValues?.secondName,
+            "surname": inputValues?.surname,
+            "secondSurName": inputValues?.secondSurName,
+            "typeDocument": parseInt(inputValues?.typeDocument),
+            "documentNumber": parseInt(inputValues?.documentNumber),
+            "email": inputValues?.email,
+            "phone": parseInt(inputValues?.phone),
+            "role": 1,
+            "password": inputValues?.password,
+            "state": true
+        }
+
+        const apiResponse = await createUserPOST(bodyPOST)
+
+        // Cerrar el modal
+        toggleModal()
+
+        // // Manejo del login dependiendo de la respuesta del API
+        // if (apiResponse?.state) {
+        //     // Manejo si la petición fue exitosa -> Pantalla de bienvenida y guardar en Redux
+        //     const { state, id, name, role, message, token } = loginData
+        //     setInfo({ name, role, message })
+        //     setLogged(true)
+        //     dispatch(login({ "status": state, id, name, role, token }))
+        // } else {
+        //     // Manejo de petición fallida -> Mostrar mensaje de error
+        //     const { message } = loginData
+        //     setInfo({ message })
+        //     setError(true)
+        // }
+
+        // Notificar cambios para que se recargue la lista
+        setChanges(value => !value)
     }
 
-    // Limpiar los datos cada vez que se cierra el modal
-    useEffect(() => {
-        setInputValues({
-            firstName: dataModal?.firstName,
-            secondName: dataModal?.secondName,
-            surname: dataModal?.surname,
-            secondSurName: dataModal?.secondSurName,
-            typeDocument: dataModal?.typeDocument,
-            documentNumber: dataModal?.documentNumber,
-            email: dataModal?.email,
-            phone: dataModal?.phone,
-        })
-    }, [isOpenModalEdit])
-
-
     return (
-        <div className='modal-edit'>
-            <h3 className="modal__title">Edición de estudiante</h3>
+        <div className='modal-create'>
+            <h3 className="modal__title">Crear un estudiante nuevo</h3>
 
-            <form onSubmit={onEditStudent} className='modal__form'>
+            <form onSubmit={onCreateStudent} className='modal__form'>
 
                 <div className="modal__input-group">
                     <label htmlFor="nombre1">Primer nombre</label>
@@ -115,9 +155,19 @@ const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit 
                 </div>
 
                 <div className="modal__input-group">
+                    <label htmlFor="password">Contraseña</label>
+                    <input
+                        type="password"
+                        name='password'
+                        value={inputValues?.password}
+                        onChange={(e) => setInputValues({ ...inputValues, password: e.target.value })}
+                    />
+                </div>
+
+                <div className="modal__input-group">
                     <label htmlFor="telefono">Teléfono</label>
                     <input
-                        type="tel"
+                        type="number"
                         name='telefono'
                         value={inputValues?.phone}
                         onChange={(e) => setInputValues({ ...inputValues, phone: e.target.value })}
@@ -128,11 +178,11 @@ const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit 
                     className='modal__submit'
                     type='submit'
                 >
-                    Editar
+                    Crear
                 </button>
             </form>
         </div>
     )
 }
 
-export default StudentEditModal
+export default StudentCreateModal

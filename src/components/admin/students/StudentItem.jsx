@@ -13,13 +13,13 @@ const StudentItem = ({ student, toggleModalView, toggleModalEdit, setDataModal }
 
     // Manejo de edición y vista
     const onViewInfo = () => {
-        toggleModalView()
         setDataModal(student)
+        toggleModalView()
     }
 
     const onEditStudent = () => {
-        toggleModalEdit()
         setDataModal(student)
+        toggleModalEdit()
     }
 
     return (

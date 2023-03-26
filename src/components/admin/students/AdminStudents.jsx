@@ -3,6 +3,7 @@ import StudentList from './StudentList'
 import Modal from '../../Modal'
 import StudentViewModal from './StudentViewModal'
 import StudentEditModal from './StudentEditModal'
+import StudentCreateModal from './StudentCreateModal'
 import { useModal } from '../../../hooks/useModal'
 import '../../../styles/admin/AdminStudents.css'
 
@@ -12,6 +13,7 @@ const AdminStudents = ({ userData }) => {
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
+    const [changes, setChanges] = useState(false)
 
     // Llamado a la API para conseguir los usuarios registrados
     useEffect(() => {
@@ -40,7 +42,7 @@ const AdminStudents = ({ userData }) => {
         }
 
         getUsers()
-    }, [])
+    }, [changes])
 
     // Funcionalidad de búsqueda de estudiantes
     const [inputValues, setInputValues] = useState({
@@ -82,11 +84,6 @@ const AdminStudents = ({ userData }) => {
     const [isOpenModalView, toggleModalView] = useModal(false)
     const [isOpenModalEdit, toggleModalEdit] = useModal(false)
     const [dataModal, setDataModal] = useState({})
-
-    // Ventana modal para la creación de un nuevo estudiante
-    const onCreateStudent = () => {
-
-    }
 
     return (
         <div className='admin-content-students'>
@@ -228,17 +225,20 @@ const AdminStudents = ({ userData }) => {
 
             {/* Modal de edición de usuario */}
             <Modal isOpen={isOpenModalEdit} toggleModal={toggleModalEdit}>
-                <StudentEditModal dataModal={dataModal}/>
+                <StudentEditModal
+                    dataModal={dataModal}
+                    toggleModal={toggleModalEdit}
+                    setChanges={setChanges}
+                    isOpenModalEdit={isOpenModalEdit}
+                />
             </Modal>
 
             {/* Modal de creación de usuario */}
-            <Modal
-                isOpen={isOpenModalCreate}
-                toggleModal={toggleModalCreate}
-            >
-                <h4>Hola</h4>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id dolores architecto quod accusamus eius distinctio consequatur, omnis quis laboriosam quos, reiciendis, est cumque quam officia. Illo earum ut cumque explicabo.</p>
-                <button onClick={() => console.log('Desde el modal')}>Hola</button>
+            <Modal isOpen={isOpenModalCreate} toggleModal={toggleModalCreate}>
+                <StudentCreateModal
+                    toggleModal={toggleModalCreate}
+                    setChanges={setChanges}
+                />
             </Modal>
         </div>
     )

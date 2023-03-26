@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/admin/AdminHome.css'
+import '../../../styles/adminView/pages/AdminHome.css'
 
 const AdminHome = ({ setCurrentPage }) => {
     return (

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import AdminNav from './AdminNav'
-import AdminSidebar from './AdminSidebar'
-import AdminHome from './AdminHome'
-import AdminQuestions from './AdminQuestions'
-import AdminProfile from './AdminProfile'
-import AdminStudents from './students/AdminStudents'
-import '../../styles/admin/AdminPage.css'
+import AdminNav from './layout/AdminNav'
+import AdminSidebar from './layout/AdminSidebar'
+import AdminHome from './pages/AdminHome'
+import AdminQuestions from './manageQuestions/AdminQuestions'
+import AdminProfile from './pages/AdminProfile'
+import AdminStudents from './manageStudents/AdminStudents'
+import '../../styles/adminView/AdminPage.css'
 
 const AdminPage = () => {
     // Redirigir al usuario cuando no esté logueado

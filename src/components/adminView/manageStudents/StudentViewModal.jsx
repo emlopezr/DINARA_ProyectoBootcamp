@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../styles/admin/manageStudents/StudentViewModal.css'
+import '../../../styles/adminView/manageStudents/StudentViewModal.css'
 
 const StudentViewModal = ({ dataModal }) => {
     return (

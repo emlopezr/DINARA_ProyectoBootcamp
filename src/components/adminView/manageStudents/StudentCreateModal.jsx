@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import '../../../styles/admin/manageStudents/StudentFormModal.css'
+import '../../../styles/adminView/manageStudents/StudentFormModal.css'
 
 const StudentCreateModal = ({ toggleModal, setChanges, isOpenModalCreate }) => {
     // Para conseguir el token de autorización

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/admin/AdminSidebar.css'
+import '../../../styles/adminView/layout/AdminSidebar.css'
 
 const AdminSidebar = ({ currentPage, sidebarDisplay, onChangePage }) => {
 

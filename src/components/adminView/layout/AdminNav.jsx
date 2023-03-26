@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { logout } from '../../store/auth/authSlice'
-import '../../styles/admin/AdminNav.css'
+import { logout } from '../../../store/auth/authSlice'
+import '../../../styles/adminView/layout/AdminNav.css'
 
 const AdminNav = ({ name, sidebarDisplay, setSidebarDisplay, onChangePage }) => {
     // Usar Redux para manejar la autenticación

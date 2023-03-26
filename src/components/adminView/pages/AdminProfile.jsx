@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/admin/AdminProfile.css'
+import '../../../styles/adminView/pages/AdminProfile.css'
 
 const AdminProfile = ({ userData }) => {
     return (

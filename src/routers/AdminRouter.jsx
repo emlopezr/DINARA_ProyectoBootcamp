@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import AdminPage from '../components/admin/AdminPage'
+import AdminPage from '../components/adminView/AdminPage'
 
 const AdminRouter = () => {
     return (

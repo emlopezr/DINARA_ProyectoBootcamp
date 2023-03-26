@@ -1,6 +1,6 @@
 import React from 'react'
 import StudentItem from './StudentItem'
-import '../../../styles/admin/manageStudents/StudentList.css'
+import '../../../styles/adminView/manageStudents/StudentList.css'
 
 const StudentList = ({ students, toggleModalView, toggleModalEdit, setDataModal }) => {
     return (

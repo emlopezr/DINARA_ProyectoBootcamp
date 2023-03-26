@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../styles/Modal.css'
+import '../../styles/utilities/Modal.css'
 
 const Modal = ({ children, isOpen, toggleModal }) => {
     return (

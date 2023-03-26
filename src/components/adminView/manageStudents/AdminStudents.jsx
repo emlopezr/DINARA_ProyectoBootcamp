@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import StudentList from './StudentList'
-import Modal from '../../Modal'
+import Modal from '../../utilities/Modal'
 import StudentViewModal from './StudentViewModal'
 import StudentEditModal from './StudentEditModal'
 import StudentCreateModal from './StudentCreateModal'
-import { useModal } from '../../../hooks/useModal'
-import '../../../styles/admin/AdminStudents.css'
 import PageSelector from './PageSelector'
+import { useModal } from '../../../hooks/useModal'
 
 const AdminStudents = ({ userData }) => {
     // Estado para guardar los usuarios recibidos o mensaje de error

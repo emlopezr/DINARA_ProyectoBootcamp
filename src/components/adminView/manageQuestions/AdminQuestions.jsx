@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/admin/AdminQuestions.css'
+import '../../../styles/adminView/manageQuestions/AdminQuestions.css'
 
 const AdminQuestions = () => {
     return (

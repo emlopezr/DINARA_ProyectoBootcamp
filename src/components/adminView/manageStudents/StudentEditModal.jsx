@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../../../styles/admin/manageStudents/StudentFormModal.css'
+import '../../../styles/adminView/manageStudents/StudentFormModal.css'
 
 const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit }) => {
     // Manejo de evento de edición

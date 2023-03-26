@@ -1,0 +1,32 @@
+.page-selector {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.page-selector .page {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    cursor: pointer;
+    background-color: #1a759f;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.page-selector .page:hover {
+    background-color: #2da5dc;
+}
+
+.page-selector .page.page--selected {
+    background-color: #76c893;
+}

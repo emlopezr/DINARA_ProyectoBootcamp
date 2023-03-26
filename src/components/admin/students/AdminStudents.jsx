@@ -6,6 +6,7 @@ import StudentEditModal from './StudentEditModal'
 import StudentCreateModal from './StudentCreateModal'
 import { useModal } from '../../../hooks/useModal'
 import '../../../styles/admin/AdminStudents.css'
+import PageSelector from './PageSelector'
 
 const AdminStudents = ({ userData }) => {
     // Estado para guardar los usuarios recibidos o mensaje de error
@@ -56,17 +57,6 @@ const AdminStudents = ({ userData }) => {
     })
     const [displaySearch, setDisplaySearch] = useState(false)
 
-    // Manejo de eventos para la búsqueda
-    let filteredStudents = students
-
-    for (const key in inputValues) {
-        if (inputValues[key].length > 0) {
-            filteredStudents = filteredStudents.filter((student) =>
-                student[key].toLowerCase().includes(inputValues[key].toLowerCase())
-            );
-        }
-    }
-
     const onClearInputs = () => {
         setInputValues({
             firstName: '',
@@ -78,6 +68,32 @@ const AdminStudents = ({ userData }) => {
             phone: ''
         })
     }
+
+    // Manejo de eventos para la búsqueda
+    let filteredStudents = students
+
+    for (const key in inputValues) {
+        if (inputValues[key].length > 0) {
+            filteredStudents = filteredStudents.filter((student) =>
+                student[key].toLowerCase().includes(inputValues[key].toLowerCase())
+            );
+        }
+    }
+
+    // Paginador -> Dividir los estudiantes a mostrar en listas de tamaño 5 y usar el estado para decidir cual mostrar
+    const [page, setPage] = useState(0)
+    const pageSize = 5
+    let tablePages = []
+
+    for (let i = 0; i < filteredStudents.length; i += pageSize) {
+        const page = filteredStudents.slice(i, i + pageSize)
+        tablePages.push(page)
+    }
+
+    // Reiniciar la página en caso de búsqueda para evitar errores
+    useEffect(() => {
+        setPage(0)
+    }, [inputValues])
 
     // Uso de las ventanas modales
     const [isOpenModalCreate, toggleModalCreate] = useModal(false)
@@ -182,14 +198,22 @@ const AdminStudents = ({ userData }) => {
                     </div>
 
                     {(filteredStudents.length > 0) &&
-                        <div className="admin-students__list">
-                            <StudentList
-                                students={filteredStudents}
-                                toggleModalView={toggleModalView}
-                                toggleModalEdit={toggleModalEdit}
-                                setDataModal={setDataModal}
+                        <>
+                            <div className="admin-students__list">
+                                <StudentList
+                                    students={tablePages[page] || []}
+                                    toggleModalView={toggleModalView}
+                                    toggleModalEdit={toggleModalEdit}
+                                    setDataModal={setDataModal}
+                                />
+                            </div>
+
+                            <PageSelector
+                                pages={tablePages.length}
+                                page={page}
+                                setPage={setPage}
                             />
-                        </div>
+                        </>
                     }
 
                     {(filteredStudents.length === 0) &&

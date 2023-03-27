@@ -6,6 +6,7 @@ import StudentEditModal from './StudentEditModal'
 import StudentCreateModal from './StudentCreateModal'
 import PageSelector from '../../utilities/PageSelector'
 import { useModal } from '../../../hooks/useModal'
+import '../../../styles/adminView/manageStudents/AdminStudents.css'
 
 const AdminStudents = ({ userData }) => {
     // Estado para guardar los usuarios recibidos o mensaje de error

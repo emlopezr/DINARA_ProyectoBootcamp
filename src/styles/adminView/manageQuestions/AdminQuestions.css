@@ -12,6 +12,9 @@
     -o-border-radius: 1rem;
     grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
+    box-shadow: 0px 0px 10px 0px #00000040;
+    -webkit-box-shadow: 0px 0px 10px 0px #00000040;
+    -moz-box-shadow: 0px 0px 10px 0px #00000040;
 }
 
 .search-bar-questions label {
@@ -46,6 +49,9 @@
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
     overflow: hidden;
+    box-shadow: 0px 0px 10px 0px #00000040;
+    -webkit-box-shadow: 0px 0px 10px 0px #00000040;
+    -moz-box-shadow: 0px 0px 10px 0px #00000040;
 }
 
 .question__title {
@@ -172,6 +178,9 @@
         #1a759f 100%
     );
     cursor: pointer;
+    box-shadow: 0px 0px 10px 0px #00000040;
+    -webkit-box-shadow: 0px 0px 10px 0px #00000040;
+    -moz-box-shadow: 0px 0px 10px 0px #00000040;
 }
 
 .create-question:hover {

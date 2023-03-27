@@ -21,6 +21,9 @@
     background-color: #1a759f;
     color: #ffffff;
     font-weight: bold;
+    box-shadow: 0px 0px 10px 0px #00000040;
+    -webkit-box-shadow: 0px 0px 10px 0px #00000040;
+    -moz-box-shadow: 0px 0px 10px 0px #00000040;
 }
 
 .page-selector .page:hover {

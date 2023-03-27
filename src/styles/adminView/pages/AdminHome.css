@@ -17,6 +17,9 @@
     gap: 2rem;
     color: #ffffff;
     cursor: pointer;
+    box-shadow: 0px 0px 10px 0px #00000040;
+    -webkit-box-shadow: 0px 0px 10px 0px #00000040;
+    -moz-box-shadow: 0px 0px 10px 0px #00000040;
 }
 
 .admin-home-card:nth-child(2) {

@@ -50,7 +50,7 @@ const AdminPage = () => {
             <div className={sidebarDisplay ? 'admin-content admin-content--sidebar' : 'admin-content'}>
                 {(currentPage === 'home') && <AdminHome setCurrentPage={setCurrentPage} />}
                 {(currentPage === 'students') && <AdminStudents userData={userData} />}
-                {(currentPage === 'questions') && <AdminQuestions />}
+                {(currentPage === 'questions') && <AdminQuestions userData={userData}/>}
                 {(currentPage === 'profile') && <AdminProfile userData={userData} />}
             </div>
         </div>

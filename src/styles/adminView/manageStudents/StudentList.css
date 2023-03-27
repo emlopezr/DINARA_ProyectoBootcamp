@@ -142,19 +142,49 @@
 }
 
 .view-button {
-    background-color: #52b69a;
+    background: linear-gradient(
+        90deg,
+        #1a7431 0%,
+        #208b3a 25%,
+        #25a244 50%,
+        #2dc653 75%,
+        #4ad66d 100%
+    );
 }
 
 .view-button:hover {
-    background-color: #3a8b74;
+    background: linear-gradient(
+        90deg,
+        #135724 0%,
+        #18682b 25%,
+        #1b7933 50%,
+        #21943e 75%,
+        #27b049 100%
+    );
 }
 
 .edit-button {
-    background-color: #f4a261;
+    background: #ff6d00;
+    background: linear-gradient(
+        90deg,
+        #ff6d00 0%,
+        #ff7900 25%,
+        #ff8500 50%,
+        #ff9100 75%,
+        #ff9e00 100%
+    );
 }
 
 .edit-button:hover {
-    background-color: #ee7311;
+    background: #bf5100;
+    background: linear-gradient(
+        90deg,
+        #bf5100 0%,
+        #bf5a00 25%,
+        #bf6300 50%,
+        #bf6c00 75%,
+        #bf7600 100%
+    );
 }
 
 .error-alert {

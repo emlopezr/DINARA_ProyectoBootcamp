@@ -65,27 +65,27 @@
     -moz-border-radius: 0.5rem;
     -ms-border-radius: 0.5rem;
     -o-border-radius: 0.5rem;
-    background: #e85d04;
+    background: #6e1423;
     background: linear-gradient(
         90deg,
-        #e85d04 0%,
-        #dc2f02 25%,
-        #d00000 50%,
-        #9d0208 75%,
-        #6a040f 100%
+        #6e1423 0%,
+        #85182a 25%,
+        #a71e34 50%,
+        #bd1f36 75%,
+        #da1e37 100%
     );
     cursor: pointer;
 }
 
 .clear-inputs:hover {
-    background: #ad4503;
+    background: #520e1a;
     background: linear-gradient(
         90deg,
-        #ad4503 0%,
-        #a52301 25%,
-        #9c0000 50%,
-        #750106 75%,
-        #4f030b 100%
+        #520e1a 0%,
+        #85182a 25%,
+        #7d1627 50%,
+        #8d1728 75%,
+        #a31629 100%
     );
 }
 

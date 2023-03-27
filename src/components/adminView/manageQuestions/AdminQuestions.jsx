@@ -109,6 +109,10 @@ const AdminQuestions = ({ userData }) => {
                                     questions={tablePages[page] || []}
                                     toggleModalEdit={toggleModalEdit}
                                     setDataModal={setDataModal}
+                                    setChanges={setChanges}
+                                    setError={setError}
+                                    setMessage={setMessage}
+                                    userData={userData}
                                 />
                             </div>
 

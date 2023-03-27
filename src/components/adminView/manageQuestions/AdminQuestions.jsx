@@ -87,7 +87,7 @@ const AdminQuestions = ({ userData }) => {
                 <>
                     {/* Funcionalidad de búsqueda */}
                     <div className="search-bar-questions">
-                        <label htmlFor="nombre">Nombre de la pregunta</label>
+                        <label htmlFor="nombre">Buscar pregunta</label>
                         <input
                             type="text" name='nombre'
                             value={inputValue}

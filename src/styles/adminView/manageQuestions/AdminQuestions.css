@@ -10,7 +10,7 @@
     -moz-border-radius: 1rem;
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     box-shadow: 0px 0px 10px 0px #00000040;
     -webkit-box-shadow: 0px 0px 10px 0px #00000040;

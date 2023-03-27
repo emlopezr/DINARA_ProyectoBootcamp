@@ -19,26 +19,33 @@ const AdminQuestions = ({ userData }) => {
         const getQuestions = async () => {
             setLoading(true)
 
-            const apiURL = `http://127.0.0.1:4001/api/v1/form/getquestions`
-            const response = await fetch(apiURL, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${userData?.token}`
-                },
-            })
-            const data = await response.json();
-            setLoading(false)
-
-            // Manejo de peticiones sin autorización
-            if (data?.message !== 'Falló la autenticación del token.') {
-                let { questions } = data
-                questions = questions.filter(question => question.options.length > 0)
-
-                setQuestions([...questions])
-            } else {
+            try {
+                const apiURL = `http://127.0.0.1:4001/api/v1/form/getquestions`
+                const response = await fetch(apiURL, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${userData?.token}`
+                    },
+                })
+                const data = await response.json();
+                setLoading(false)
+                
+                // Manejo de peticiones sin autorización
+                if (data?.message !== 'Falló la autenticación del token.') {
+                    let { questions } = data
+                    questions = questions.filter(question => question.options.length > 0)
+                    
+                    setQuestions([...questions])
+                } else {
+                    setError(true)
+                    setMessage(data?.message)
+                }
+            } catch {
+                setLoading(false)
                 setError(true)
-                setMessage(data?.message)
+                setMessage('Servidor desconectado')
             }
+
         }
 
         getQuestions()

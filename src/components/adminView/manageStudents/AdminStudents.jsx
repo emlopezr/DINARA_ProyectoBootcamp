@@ -22,23 +22,29 @@ const AdminStudents = ({ userData }) => {
         const getUsers = async () => {
             setLoading(true)
 
-            const apiURL = `http://127.0.0.1:4001/api/v1/user/getUsers`
-            const response = await fetch(apiURL, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${userData?.token}`
-                },
-            })
-            const data = await response.json();
-            setLoading(false)
+            try {
+                const apiURL = `http://127.0.0.1:4001/api/v1/user/getUsers`
+                const response = await fetch(apiURL, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${userData?.token}`
+                    },
+                })
+                const data = await response.json();
+                setLoading(false)
 
-            // Manejo de peticiones sin autorización
-            if (data?.status !== 401) {
-                const { users } = data
-                setStudents([...users])
-            } else {
+                // Manejo de peticiones sin autorización
+                if (data?.status !== 401) {
+                    const { users } = data
+                    setStudents([...users])
+                } else {
+                    setError(true)
+                    setMessage(data?.message)
+                }
+            } catch {
+                setLoading(false)
                 setError(true)
-                setMessage(data?.message)
+                setMessage('Servidor desconectado')
             }
         }
 

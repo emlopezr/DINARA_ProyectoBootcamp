@@ -106,6 +106,16 @@ const QuestionEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit
     }
 
     // Limpiar mensaje de error en caso de que lo haya
+
+    const getCorrectOption = (dataModal) => {
+        if (JSON.stringify(dataModal) === '{}') {
+            return false
+        } else {
+            const correctOption = dataModal.options.findIndex(option => option.iscorrect)
+            return (correctOption+1).toString()
+        }
+    }
+
     useEffect(() => {
         setInputValues({
             question: dataModal?.question || '',
@@ -113,7 +123,7 @@ const QuestionEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit
             option2: dataModal?.options?.[1]?.option || '',
             option3: dataModal?.options?.[2]?.option || '',
             option4: dataModal?.options?.[3]?.option || '',
-            correctOption: '1',
+            correctOption: getCorrectOption(dataModal) || '1',
         })
         setError(false)
         setMessage('')
@@ -173,7 +183,6 @@ const QuestionEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit
                                     type="text"
                                     name='opcion2'
                                     value={inputValues?.option2}
-                                    checked={inputValues.correctOption === '3'}
                                     onChange={(e) => setInputValues({ ...inputValues, option2: e.target.value })}
                                 />
                             </div>
@@ -185,13 +194,13 @@ const QuestionEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit
                                     required
                                     name="correcta"
                                     value="3"
+                                    checked={inputValues.correctOption === '3'}
                                     onChange={(e) => setInputValues({ ...inputValues, correctOption: e.target.value })}
                                 ></input>
                                 <input
                                     type="text"
                                     name='opcion3'
                                     value={inputValues?.option3}
-                                    checked={inputValues.correctOption === '4'}
                                     onChange={(e) => setInputValues({ ...inputValues, option3: e.target.value })}
                                 />
                             </div>
@@ -203,6 +212,7 @@ const QuestionEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit
                                     required
                                     name="correcta"
                                     value="4"
+                                    checked={inputValues.correctOption === '4'}
                                     onChange={(e) => setInputValues({ ...inputValues, correctOption: e.target.value })}
                                 ></input>
                                 <input

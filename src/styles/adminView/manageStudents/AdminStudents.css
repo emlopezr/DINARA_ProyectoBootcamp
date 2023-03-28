@@ -305,7 +305,7 @@
 
 @media screen and (max-width: 1040px) {
     .mobile-hidden {
-        display: none;
+        display: none!important;
     }
 
     .search-inputs {

@@ -22,7 +22,7 @@ const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit 
         e.preventDefault()
 
         // Petición PUT a la Api para editar un usuario
-        const createUserPOST = async (id, datos) => {
+        const createUserPUT = async (id, datos) => {
             const apiURL = `http://localhost:4001/api/v1/user/update/${id}`
             const response = await fetch(apiURL, {
                 method: 'PUT',
@@ -48,7 +48,7 @@ const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit 
             phone: parseInt(inputValues.phone),
         }
 
-        const apiResponse = await createUserPOST(user.id, bodyPUT)
+        const apiResponse = await createUserPUT(user.id, bodyPUT)
 
         // Manejo del login dependiendo de la respuesta del API
         if (apiResponse?.state) {

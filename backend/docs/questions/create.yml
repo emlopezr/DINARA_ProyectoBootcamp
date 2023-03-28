@@ -1,0 +1,38 @@
+/api/v1/questions/create:
+  post:
+    tags:
+      - Questions
+    security:
+    - bearerAuth: []
+    description: Crear preguntas
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/question'
+    responses:
+      '200':
+        description: Pregunta creada correctamente
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Question'
+            example:
+              {
+                "state": true,
+                "message": "Pregunta creada correctamente"
+              }
+      '400':
+        description: Error en la petición
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state: { type: boolean }
+                mensaje: { type: string }
+            example:
+              {
+                "state": false,
+                "mensaje": "Fallo en la creación de la pregunta"
+              }

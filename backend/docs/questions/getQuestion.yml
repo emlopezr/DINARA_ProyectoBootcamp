@@ -1,0 +1,43 @@
+/api/v1/getQuestion:
+  get:
+    tags:
+      - Questions
+    security:
+    - bearerAuth: []
+    description: Obtener preguntas
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Question'
+            example:
+              {
+                "state": true,
+                "questions": [
+                  {
+                    "question": "¿que dia fue el 21 de febrero?",
+                    "id": 27
+                  },
+                  {
+                    "question": "¿que dia fue el 21 de febrero?",
+                    "id": 28
+                  },
+                  {
+                      "question": "¿que dia fue el 21 de febrero?",
+                      "id": 29
+                  }
+                ]
+              }
+      400:
+        description: Petición fallida
+        content:
+          application/json:
+            example:
+              {
+                "state": false,
+                "mensaje": "No se pudo obtener las preguntas"
+              }

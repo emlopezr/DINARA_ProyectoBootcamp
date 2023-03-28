@@ -1,0 +1,38 @@
+/api/v1/typeDocumets/create:
+  post:
+    tags:
+      - TypeDocuments
+    security:
+    - bearerAuth: []
+    description: Crear tipo de documento
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/typeDocument'
+    responses:
+      '200':
+        description: Tipo de documento creado correctamente
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/TypeDocument'
+            example:
+              {
+                "status": true ,
+                "message": 'Tipo de documento creado con exito'
+              }
+      '400':
+        description: Error en la petición
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state: { type: boolean }
+                mensaje: { type: string }
+            example:
+              {
+                "status": false ,
+                "message": 'No se pudo crear el tipo de documento'
+              }

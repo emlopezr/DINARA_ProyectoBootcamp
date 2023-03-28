@@ -1,0 +1,38 @@
+definitions:
+  Form:
+    type: object
+    properties:
+      id:
+        type: number
+        description: id del formulario
+      student_id:
+        type: number
+        description: id del estudiante
+      answer_id:
+        type: number
+        description: id de la respuesta
+      state:
+        type: boolean
+        description: estado del formulario
+components:
+  schemas:
+    form:
+      type: object
+      properties:
+        estudianteId:
+          type: number
+          description: id del estudiante
+        answers:
+          type: array
+          itmes:
+            type: number
+            description: id de la respuesta
+      required:
+        - estudianteId
+        - answers
+      example:
+        estudianteId: 1
+        answers:
+          - 1
+          - 2
+          - 3

@@ -1,0 +1,53 @@
+/api/v1/typeDocumets/getTypes:
+  get:
+    tags:
+      - TypeDocuments
+    security:
+    - bearerAuth: []
+    description: Obtener tipos de documentos
+    produces:
+      - application/json
+    responses:
+      '200':
+        description: Tipos de documentos obtenidos correctamente
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/TypeDocument'
+            example:
+              {
+                  "status": true,
+                  "message": "Tipos de documentos obtenidos con exito",
+                  "typesDocuments": [
+                      {
+                          "id": 1,
+                          "name": "cedula de ciudadania"
+                      },
+                      {
+                          "id": 2,
+                          "name": "cedula de extranjeria"
+                      },
+                      {
+                          "id": 3,
+                          "name": "pasaporte"
+                      },
+                      {
+                          "id": 4,
+                          "name": "tarjeta de identidad"
+                      }
+                  ]
+              }
+      '400':
+        description: Error en la petición
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state: { type: boolean }
+                mensaje: { type: string }
+            example:
+              {
+                "status": false ,
+                "message": 'No se pudieron obtener los tipos de documentos'
+              }

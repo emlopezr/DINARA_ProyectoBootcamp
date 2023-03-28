@@ -1,0 +1,45 @@
+/api/v1/user/getUsers:
+  get:
+    tags:
+      - Users
+    security:
+    - bearerAuth: []
+    description: Listar usuarios
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/User'
+            example:
+              {
+                "state": true,
+                "message": "Listado de estudiantes",
+                "users": [
+                  {
+                    "firstName": "David",
+                    "secondName": "Alejandro",
+                    "surname": "Sepulveda",
+                    "secondSurName": "Amaya",
+                    "typeDocument": 1,
+                    "documentNumber": "1037660985",
+                    "email": "da_alejandro@gmail.com",
+                    "phone": "32123122314"
+                  },
+                  {
+                    "firstName": "Stephania",
+                    "secondName": "",
+                    "surname": "Carrero",
+                    "secondSurName": "Vargas",
+                    "typeDocument": 1,
+                    "documentNumber": "1004810062",
+                    "email": "scarrero@gmail.com",
+                    "phone": "32123122314"
+                  }
+                ]
+              }

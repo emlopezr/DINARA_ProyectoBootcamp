@@ -1,0 +1,41 @@
+/api/v1/questions/updateAnswer/{id}:
+  put:
+    tags:
+      - Answers
+    security:
+    - bearerAuth: []
+    description: Actualizar respuesta
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        in: path
+        description: id de la respuesta
+        required: true
+        type: number
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/answerUpdate'
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Answer'
+            example:
+              {
+                "status": true,
+                "message": "opcion Editada con exito"
+              }
+      404:
+        description: Petición fallida
+        content:
+          application/json:
+            example:
+              {
+                "status": false,
+                "message": "Error al editar la opcion"
+              }

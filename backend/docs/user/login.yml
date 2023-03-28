@@ -1,0 +1,27 @@
+/api/v1/login:
+  post:
+    tags:
+      - Users
+    security: []
+    description: Iniciar sesión
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/login'
+    responses:
+      '200':
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/User'
+            example:
+              {
+                "state": true,
+                "id": 8,
+                "name": "David Alejandro Sepulveda Amaya",
+                "role": "admin",
+                "mensaje": "Ingreso exitoso",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhX2FsZWphbmRyb0BnbWFpbC5jb20iLCJpZCI6OCwiaWF0IjoxNjc5Mzc2NDgyLCJleHAiOjE2NzkzNzgyODJ9.bT_QYGsfRKQNRBv-QT-F6MLU5kdwFbz67ygTng67PSU"
+              }

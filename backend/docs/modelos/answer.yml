@@ -1,0 +1,36 @@
+definitions:
+  Answer:
+    type: object
+    properties:
+      id:
+        type: number
+        description: id de la respuesta
+      idQuestion:
+        type: number
+        description: id de la pregunta
+      answer:
+        type: number
+        description: contenido de la respuesta
+      is_correct:
+        type: boolean
+        description: valor de la respuesta correcta o incorrecta
+      state:
+        type: boolean
+        description: Estado de la respuesta
+components:
+  schemas:
+    answerUpdate:
+      type: object
+      properties:
+        answer:
+          type: number
+          description: contenido de la respuesta
+        is_correct:
+          type: boolean
+          description: valor de la respuesta correcta o incorrecta
+      required:
+        - answer
+        - is_correct
+      example:
+        answer: Domingo
+        is_correct: true

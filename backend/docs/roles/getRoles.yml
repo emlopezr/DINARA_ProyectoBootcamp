@@ -1,0 +1,47 @@
+/api/v1/roles/getRoles:
+  get:
+    tags:
+      - Roles
+    security:
+    - bearerAuth: []
+    description: Obtener roles
+    responses:
+      '200':
+        description: Roles obtenidos correctamente
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Roles'
+            example:
+              {
+                  "status": true,
+                  "message": "Roles obtenidos con exito",
+                  "roles": [
+                      {
+                          "id": 1,
+                          "name": "admin"
+                      },
+                      {
+                          "id": 2,
+                          "name": "user"
+                      },
+                      {
+                          "id": 39,
+                          "name": "Administrador"
+                      }
+                  ]
+              }
+      '400':
+        description: Error en la petición
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state: { type: boolean }
+                mensaje: { type: string }
+            example:
+              {
+                "status": false ,
+                "message": 'No se pudieron obtener los roles'
+              }

@@ -1,0 +1,25 @@
+definitions:
+  Rol:
+    type: object
+    properties:
+      id:
+        type: number
+        description: id del rol
+      name:
+        type: string
+        description: nombre del rol
+      state:
+        type: boolean
+        description: Estado del rol
+components:
+  schemas:
+    role:
+      type: object
+      properties:
+        name:
+          type: string
+          description: nombre del rol
+      required:
+        - name
+      example:
+        name: Administrador

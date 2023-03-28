@@ -1,0 +1,80 @@
+/api/v1/form/getquestions:
+  get:
+    tags:
+      - Form
+    security:
+    - bearerAuth: []
+    description: Obtiene un formulario
+    produces:
+      - application/json
+    responses:
+      '200':
+        description: Formulario obtenido
+        content:
+          application/json:
+            schema:
+             $ref: '#/definitions/Form'
+            example:
+              {
+                  "state": true,
+                  "questions": [
+                      {
+                          "question": "¿que dia fue el 21 de febrero?",
+                          "id": 27,
+                          "options": [
+                              {
+                                  "id": 105,
+                                  "option": "martes"
+                              },
+                              {
+                                  "id": 106,
+                                  "option": "jueves"
+                              },
+                              {
+                                  "id": 107,
+                                  "option": "lunes"
+                              },
+                              {
+                                  "id": 108,
+                                  "option": "sabado"
+                              }
+                          ]
+                      },
+                      {
+                          "question": "¿que dia fue el 21 de febrero?",
+                          "id": 30,
+                          "options": [
+                              {
+                                  "id": 117,
+                                  "option": "martes"
+                              },
+                              {
+                                  "id": 118,
+                                  "option": "jueves"
+                              },
+                              {
+                                  "id": 119,
+                                  "option": "lunes"
+                              },
+                              {
+                                  "id": 120,
+                                  "option": "sabado"
+                              }
+                          ]
+                      }
+                  ]
+              }
+      '400':
+        description: Error al obtener el formulario
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state: { type: boolean }
+                mensaje: { type: string }
+            example:
+              {
+                state: false ,
+                error: 'Error al obtener el listado'
+              }

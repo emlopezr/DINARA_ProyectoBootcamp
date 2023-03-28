@@ -1,0 +1,25 @@
+definitions:
+  TypeDocument:
+    type: object
+    properties:
+      id:
+        type: number
+        description: id del tipo de documento
+      name:
+        type: string
+        description: nombre del tipo de documento
+      state:
+        type: boolean
+        description: Estado del tipo de documento
+components:
+  schemas:
+    typeDocument:
+      type: object
+      properties:
+        name:
+          type: string
+          description: nombre del tipo de documento
+      required:
+        - name
+      example:
+        name: Cedula de ciudadania

@@ -1,0 +1,38 @@
+/api/v1/roles/create:
+  post:
+    tags:
+      - Roles
+    security:
+    - bearerAuth: []
+    description: Crear roles
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/role'
+    responses:
+      '200':
+        description: Rol creado correctamente
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Role'
+            example:
+              {
+                "status": true ,
+                "message": 'Rol creado con exito'
+              }
+      '400':
+        description: Error en la petición
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state: { type: boolean }
+                mensaje: { type: string }
+            example:
+              {
+                "status": false ,
+                "message": 'No se pudo crear el rol'
+              }

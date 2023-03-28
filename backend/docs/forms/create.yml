@@ -1,0 +1,41 @@
+/api/v1/form/postquestions:
+  post:
+    tags:
+      - Form
+    security:
+    - bearerAuth: []
+    description: Crea un formulario
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/form'
+    responses:
+      '200':
+        description: Formulario creado
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state: { type: boolean }
+                message: { type: string }
+            example:
+              {
+                "status": true,
+                "message": "Respuestas almacenadas con exito"
+              }
+      '400':
+        description: Error al crear el formulario
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state: { type: boolean }
+                mensaje: { type: string }
+            example:
+              {
+                "status": false,
+                "message": "No se pudieron almacenar las respuestas"
+              }

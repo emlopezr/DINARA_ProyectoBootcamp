@@ -1,0 +1,42 @@
+/api/v1/user/getUser/{id}:
+  get:
+    tags:
+      - Users
+    security:
+    - bearerAuth: []
+    description: Obtener usuario
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        in: path
+        description: id del usuario
+        required: true
+        type: number
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/User'
+            example:
+              {
+                "firstName": "daniel",
+                "secondName": "Jose",
+                "surname": "cruz",
+                "secondSurName": "casallaz",
+                "typeDocument": 1,
+                "documentNumber": "123456789",
+                "email": "danielJ@gmail.com",
+                "phone": "32123122314"
+              }
+      400:
+        description: Petición fallida
+        content:
+          application/json:
+            example:
+              {
+                "state": false,
+                "mensaje": "No se pudo obtener el usuario"
+              }

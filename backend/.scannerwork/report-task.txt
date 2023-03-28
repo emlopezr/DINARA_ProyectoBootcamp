@@ -1,0 +1,6 @@
+projectKey=RetoFinal
+serverUrl=http://localhost:9000
+serverVersion=9.9.0.65466
+dashboardUrl=http://localhost:9000/dashboard?id=RetoFinal
+ceTaskId=AYcGSUdoxVJOKTn-7HO7
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYcGSUdoxVJOKTn-7HO7

@@ -1,0 +1,41 @@
+/api/v1/questions/updateQuestion/{id}:
+  put:
+    tags:
+      - Questions
+    security:
+    - bearerAuth: []
+    description: Actualizar pregunta
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        in: path
+        description: id de la pregunta
+        required: true
+        type: number
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/questionUpdate'
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Question'
+            example:
+              {
+                "state": true,
+                "message": "Pregunta Editada con exito"
+              }
+      400:
+        description: Petición fallida
+        content:
+          application/json:
+            example:
+              {
+                "state": false,
+                "message": "Error al editar la pregunta"
+              }

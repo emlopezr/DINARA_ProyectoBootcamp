@@ -1,0 +1,41 @@
+/api/v1/user/update/{id}:
+  put:
+    tags:
+      - Users
+    security:
+    - bearerAuth: []
+    description: Actualizar usuario
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        in: path
+        description: id del usuario
+        required: true
+        type: number
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/userUpdate'
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/User'
+            example:
+              {
+                "state": true,
+                "mensaje": "Usuario actualizado correctamente"
+              }
+      400:
+        description: Petición fallida
+        content:
+          application/json:
+            example:
+              {
+                "state": false,
+                "mensaje": "No se pudo actualizar el usuario"
+              }

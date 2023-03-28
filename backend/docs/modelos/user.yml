@@ -1,0 +1,148 @@
+definitions:
+  User:
+    type: object
+    properties:
+      firstName:
+        type: string
+      secondName:
+        type: string
+      surname:
+        type: string
+      secondSurName:
+        type: string
+      typeDocument:
+        type: number
+      documentNumber:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+      role:
+        type: number
+      password:
+        type: string
+      state:
+        type: boolean
+components:
+  schemas:
+    user:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+        surname:
+          type: string
+          description: Primer apellido del usuario
+        secondSurName:
+          type: string
+          description: Segundo apellido del usuario
+        typeDocument:
+          type: number
+          description: tipo de documeto del usuario
+        documentNumber:
+          type: string
+          description: numero de documeto del usuario
+        email:
+          type: string
+          description: email del usuario
+        phone:
+          type: string
+          description: numero de telefono del usuario
+        role:
+          type: number
+          description: id del ril del usuario
+        password:
+          type: string
+          description: clave del usuario
+        state:
+          type: boolean
+          description: esatado del usaurio activo o inactivo
+      required:
+        - firstName
+        - secondName
+        - surname
+        - secondSurName
+        - typeDocument
+        - documentNumber
+        - email
+        - phone
+        - role
+        - password
+        - state
+      example:
+        firstName: David
+        secondName: Alejandro
+        surname: Sepulveda
+        secondSurName: Amaya
+        typeDocument: 1
+        documentNumber: 1037660985
+        email: da_alejandro@gmail.com
+        phone: 32123122314
+        role: 1
+        password: passAdmin
+        state: true
+    login:
+      type: object
+      properties:
+        email:
+          type: string
+          description: email del usuario
+        password:
+          type: string
+          description: clave del usuario
+      required:
+        - email
+        - password
+      example:
+        email: da_alejandro@gmail.com
+        password: passAdmin
+    userUpdate:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+        surname:
+          type: string
+          description: Primer apellido del usuario
+        secondSurName:
+          type: string
+          description: Segundo apellido del usuario
+        typeDocument:
+          type: number
+          description: tipo de documeto del usuario
+        documentNumber:
+          type: string
+          description: numero de documeto del usuario
+        email:
+          type: string
+          description: email del usuario
+        phone:
+          type: string
+          description: numero de telefono del usuario
+      required:
+        - firstName
+        - secondName
+        - surname
+        - secondSurName
+        - typeDocument
+        - documentNumber
+        - email
+        - phone
+      example:
+        firstName: daniel
+        secondName: Jose
+        surname: cruz
+        secondSurName: casallaz
+        typeDocument: 1
+        documentNumber: 123456789
+        email: "danielJ@gmail.com"
+        phone: 32123122314

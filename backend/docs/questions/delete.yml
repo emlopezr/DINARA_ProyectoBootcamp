@@ -1,0 +1,37 @@
+/api/v1/questions/deleteQuestion/{id}:
+  delete:
+    tags:
+      - Questions
+    security:
+    - bearerAuth: []
+    description: Eliminar pregunta
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        in: path
+        description: id de la pregunta
+        required: true
+        type: number
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Question'
+            example:
+              {
+                "state": true,
+                "message": "Pregunta eliminada correctamente"
+              }
+      400:
+        description: Petición fallida
+        content:
+          application/json:
+            example:
+              {
+                "state": false,
+                "error": "Error al eliminar la pregunta"
+              }
+

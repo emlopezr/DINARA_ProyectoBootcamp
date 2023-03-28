@@ -1,0 +1,64 @@
+definitions:
+  Question:
+    type: object
+    properties:
+      name:
+        type: string
+        description: Nombre de la pregunta
+      state:
+        type: boolean
+        description: Estado de la pregunta
+components:
+  schemas:
+    question:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la pregunta
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/option'
+      required:
+        - name
+        - option
+      example:
+        name: Pregunta 1
+        options:
+          - name: Opcion 1
+            state: true
+          - name: Opcion 2
+            state: false
+          - name: Opcion 3
+            state: false
+          - name: Opcion 4
+            state: false
+    option:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la opcion
+        state:
+          type: boolean
+          description: Estado de la opcion
+      required:
+        - name
+        - state
+      example:
+        - name: Opcion 1
+          state: true
+    questionUpdate:
+      type: object
+      properties:
+        question:
+          type: string
+          description: Nombre de la pregunta
+      required:
+        - name
+      example:
+        question: ¿que dia es el 31 de diciembre?
+
+
+

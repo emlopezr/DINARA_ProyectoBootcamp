@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import '../../../styles/adminView/manageStudents/StudentFormModal.css'
 
 const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit }) => {
+    // Para conseguir el token de autorización
+    const userData = useSelector(state => state.auth)
+
     // Manejo de evento de edición
     const [inputValues, setInputValues] = useState({
         firstName: '',
@@ -14,10 +18,51 @@ const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit 
         phone: '',
     })
 
-    const onEditStudent = (e) => {
+    const onEditStudent = async (e, user) => {
         e.preventDefault()
 
-        // TODO: Falta hacer el PUT para editar, pero no tengo ID para armar la ruta
+        // Petición PUT a la Api para editar un usuario
+        const createUserPOST = async (id, datos) => {
+            const apiURL = `http://localhost:4001/api/v1/user/update/${id}`
+            const response = await fetch(apiURL, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userData?.token}`
+                },
+                body: JSON.stringify(datos),
+            })
+            const data = await response.json();
+
+            return data
+        }
+
+        const bodyPUT = {
+            firstName: inputValues.firstName,
+            secondName: inputValues.secondName,
+            surname: inputValues.surname,
+            secondSurName: inputValues.secondSurName,
+            typeDocument: parseInt(inputValues.typeDocument) || 1,
+            documentNumber: parseInt(inputValues.documentNumber),
+            email: inputValues?.email,
+            phone: parseInt(inputValues.phone),
+        }
+
+        const apiResponse = await createUserPOST(user.id, bodyPUT)
+
+        // Manejo del login dependiendo de la respuesta del API
+        if (apiResponse?.state) {
+            // Manejo si la petición fue exitosa -> Cerrar el modal
+            toggleModal()
+        } else {
+            // Manejo de petición fallida -> Mostrar mensaje de error afuera
+            const { message } = apiResponse
+            setMessage(message)
+            setError(true)
+        }
+
+        // Notificar cambios para que se recargue la lista
+        setChanges(value => !value)
     }
 
     // Limpiar los datos cada vez que se cierra el modal
@@ -39,7 +84,7 @@ const StudentEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit 
         <div className='modal-edit'>
             <h3 className="modal__title">Edición de estudiante</h3>
 
-            <form onSubmit={onEditStudent} className='modal__form'>
+            <form onSubmit={(e) => onEditStudent(e, dataModal)} className='modal__form'>
 
                 <div className="modal__input-group">
                     <label htmlFor="nombre1">Primer nombre</label>

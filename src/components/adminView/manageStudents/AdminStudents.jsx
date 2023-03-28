@@ -18,7 +18,6 @@ const AdminStudents = ({ userData }) => {
 
     // Llamado a la API para conseguir los usuarios registrados
     useEffect(() => {
-
         const getUsers = async () => {
             setLoading(true)
 
@@ -35,7 +34,10 @@ const AdminStudents = ({ userData }) => {
 
                 // Manejo de peticiones sin autorización
                 if (data?.status !== 401) {
-                    const { users } = data
+                    // Solo necesitamos los usuarios estudiantes
+                    let { users } = data
+                    users = users.filter(user => user.role === 2)
+
                     setStudents([...users])
                 } else {
                     setError(true)

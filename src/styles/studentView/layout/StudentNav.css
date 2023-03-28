@@ -1,0 +1,62 @@
+.student-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2rem 1rem 2rem;
+    padding: 1rem 0;
+    grid-area: nav;
+    border-bottom: 2px solid #aaaaaa;
+}
+
+.student-nav__user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.student-user__name {
+    color: #3b3b3b;
+    margin: 0;
+}
+
+.student-user__button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.student-user__logout {
+    font-size: 1.5rem;
+    color: #1a759f;
+}
+
+.student-user__logout:hover {
+    color: #2da5dc;
+}
+
+.student__title {
+    font-size: 2.5rem;
+    margin: 0;
+    background: linear-gradient(
+        90deg,
+        #1a759f 0%,
+        #168aad 25%,
+        #34a0a4 50%,
+        #52b69a 75%,
+        #76c893 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .student-user__name {
+        display: none;
+    }
+}

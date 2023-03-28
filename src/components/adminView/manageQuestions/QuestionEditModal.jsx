@@ -18,10 +18,10 @@ const QuestionEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit
     const [error, setError] = useState(false)
     const [message, setMessage] = useState('')
 
+    // Peticiones PUT a la Api para editar una pregunta y sus cada respuesta
     const onEditQuestion = async (e, question) => {
         e.preventDefault()
 
-        // TODO: Petición PUT a la Api para editar una pregunta y sus cada respuesta
         const editQuestionPUT = async (id, newName) => {
             const apiURL = `http://localhost:4001/api/v1/questions/updateQuestion/${id}`
             const response = await fetch(apiURL, {
@@ -86,7 +86,6 @@ const QuestionEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit
         }
 
         // Manejo si la petición fue exitosa -> Editar las respuestas
-
         for(let i=0; i < optionsPUT.length; i++) {
             const option = question.options[i]
             const apiResponse2 = await editAnswerPUT(option.id, optionsPUT[i])
@@ -100,7 +99,6 @@ const QuestionEditModal = ({ dataModal, toggleModal, setChanges, isOpenModalEdit
                 return
             }
         }
-
         
         // Notificar cambios para que se recargue la lista y cerrar modal
         setChanges(value => !value)

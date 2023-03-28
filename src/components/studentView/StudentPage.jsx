@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import StudentNav from './layout/StudentNav';
+import StudentQuestions from './layout/StudentQuestions';
+import '../../styles/studentView/StudentPage.css'
 
 const StudentPage = () => {
     // Redirigir al usuario cuando no esté logueado
@@ -14,7 +17,10 @@ const StudentPage = () => {
     }, [userData])
 
     return (
-        <div>StudentPage</div>
+        <div className='student-page'>
+            <StudentNav name={userData.name} />
+            <StudentQuestions userData={userData} />
+        </div>
     )
 }
 

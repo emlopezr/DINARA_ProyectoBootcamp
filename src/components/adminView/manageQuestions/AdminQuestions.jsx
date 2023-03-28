@@ -5,6 +5,7 @@ import QuestionList from './QuestionList'
 import PageSelector from '../../utilities/PageSelector'
 import '../../../styles/adminView/manageQuestions/AdminQuestions.css'
 import QuestionCreateModal from './QuestionCreateModal'
+import QuestionEditModal from './QuestionEditModal'
 
 const AdminQuestions = ({ userData }) => {
     // Estado para guardar las preguntas recibidas o mensaje de error
@@ -45,7 +46,6 @@ const AdminQuestions = ({ userData }) => {
                 setError(true)
                 setMessage('Servidor desconectado')
             }
-
         }
 
         getQuestions()
@@ -164,17 +164,17 @@ const AdminQuestions = ({ userData }) => {
 
 
 
-            {/* Modal de edición de usuario */}
+            {/* Modal de edición de preguntas */}
             <Modal isOpen={isOpenModalEdit} toggleModal={toggleModalEdit}>
-                {/* <StudentEditModal
+                <QuestionEditModal
                     dataModal={dataModal}
                     toggleModal={toggleModalEdit}
                     setChanges={setChanges}
                     isOpenModalEdit={isOpenModalEdit}
-                /> */}
+                />
             </Modal>
 
-            {/* Modal de creación de usuario */}
+            {/* Modal de creación de preguntas */}
             <Modal isOpen={isOpenModalCreate} toggleModal={toggleModalCreate}>
                 <QuestionCreateModal
                     toggleModal={toggleModalCreate}
